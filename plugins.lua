@@ -24,10 +24,24 @@ local plugins = {
     end
   },
 
+  -- https://github.com/Saecki/crates.nvim
+  {
+    'saecki/crates.nvim',
+    tag = "v0.3.0",
+    event = "BufReadPre Cargo.toml",
+    config = function()
+      require("crates").setup()
+    end,
+    dependencies = {
+      "nvim-lua/plenary.nvim"
+    },
+  },
+
   {
     "folke/twilight.nvim",
     cmd = {"Twilight", "TwilightEnable"},
   },
+
   -- Syntax highlight for Just files
   -- https://github.com/IndianBoy42/tree-sitter-just
   {
@@ -38,6 +52,7 @@ local plugins = {
     end,
   },
 
+  -- https://github.com/ThePrimeagen/harpoon
   {
     "ThePrimeagen/harpoon",
     lazy = false,
@@ -46,14 +61,16 @@ local plugins = {
     },
   },
 
+  -- https://github.com/RRethy/vim-illuminate
   {
     "RRethy/vim-illuminate",
     lazy = false,
   },
 
+  -- https://github.com/towolf/vim-helm
   {
     "towolf/vim-helm",
-    lazy = false,
+    ft = { "yaml", "smarty" },
   },
 
   -- Cutlass overrides the delete operations to actually just delete and not affect the current yank.
@@ -77,6 +94,8 @@ local plugins = {
     opts = overrides.neotree,
   },
 
+
+  -- https://github.com/neovim/nvim-lspconfig
   {
     "neovim/nvim-lspconfig",
     dependencies = {
@@ -94,12 +113,13 @@ local plugins = {
     end, -- Override to setup mason-lspconfig
   },
 
-  -- override plugin configs
+  -- https://github.com/williamboman/mason.nvim
   {
     "williamboman/mason.nvim",
     opts = overrides.mason
   },
 
+  -- https://github.com/nvim-treesitter/nvim-treesitter
   {
     "nvim-treesitter/nvim-treesitter",
     opts = overrides.treesitter,
@@ -108,13 +128,14 @@ local plugins = {
     },
   },
 
+  -- https://github.com/nvim-tree/nvim-tree.lua
   {
     "nvim-tree/nvim-tree.lua",
     enabled = false,
     opts = overrides.nvimtree,
   },
 
-  -- Install a plugin
+  -- https://github.com/max397574/better-escape.nvim
   {
     "max397574/better-escape.nvim",
     event = "InsertEnter",
