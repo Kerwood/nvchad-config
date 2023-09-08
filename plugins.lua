@@ -29,12 +29,22 @@ local plugins = {
     'saecki/crates.nvim',
     tag = "v0.3.0",
     event = "BufReadPre Cargo.toml",
+    opts = overrides.crates,
     config = function()
       require("crates").setup()
     end,
     dependencies = {
       "nvim-lua/plenary.nvim"
     },
+  },
+
+  {
+    "hrsh7th/nvim-cmp",
+    opts = function()
+      local M = require "plugins.configs.cmp"
+      table.insert(M.sources, { name = "crates" })
+      return M
+    end,
   },
 
   {
@@ -70,7 +80,7 @@ local plugins = {
   -- https://github.com/towolf/vim-helm
   {
     "towolf/vim-helm",
-    ft = { "yaml", "smarty" },
+    ft = { "yaml", "smarty", "helm" },
   },
 
   -- Cutlass overrides the delete operations to actually just delete and not affect the current yank.

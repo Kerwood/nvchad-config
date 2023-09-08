@@ -1,6 +1,12 @@
 local autocmd = vim.api.nvim_create_autocmd
 local opt = vim.opt
 
+-- Remove trailing whitespace in save
+autocmd("BufWritePre", {
+  pattern = "*",
+  command = "%s/\\s\\+$//e",
+})
+
 -- Auto resize panes when resizing nvim window
 autocmd("VimResized", {
   pattern = "*",

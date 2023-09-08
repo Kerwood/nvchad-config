@@ -9,6 +9,50 @@ M.general = {
   },
 }
 
+M.crates = {
+  n = {
+    ["<leader>cf"] = {
+      function()
+        require("crates").show_features_popup()
+      end,
+      "Crates - Show Features",
+    },
+    ["<leader>cv"] = {
+      function()
+        require("crates").show_versions_popup()
+      end,
+      "Crates - Show Versions",
+    },
+    ["<leader>cua"] = {
+      function()
+        require("crates").upgrade_all_crates()
+      end,
+      "Crates - Upgrade All Crates",
+    },
+    ["<leader>cu"] = {
+      function()
+        require("crates").upgrade_crate()
+      end,
+      "Crates - Upgrade Crate",
+    },
+    ["<leader>cs"] = {
+      function()
+        require("crates").show_crate_popup()
+      end,
+      "Crates - Show Crate",
+    },
+  },
+  v = {
+    ["<leader>cu"] = {
+      function()
+        require("crates").upgrade_crates()
+      end,
+      "Crates - Upgrade Selected Crates",
+    },
+  },
+
+}
+
 M.harpoon = {
   n = {
     ["<leader>hh"] = {
