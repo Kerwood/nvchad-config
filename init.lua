@@ -18,3 +18,4 @@ opt.ignorecase = true     -- ignore case in search patterns
 opt.scrolloff = 8
 opt.sidescrolloff = 8
 opt.whichwrap = 'b,s'     -- Default value
+opt.iskeyword:append("-")
