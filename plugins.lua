@@ -2,7 +2,7 @@ local overrides = require("custom.configs.overrides")
 
 ---@type NvPluginSpec[]
 local plugins = {
-    -- https://github.com/simrat39/rust-tools.nvim 
+    -- https://github.com/simrat39/rust-tools.nvim
     {
     "simrat39/rust-tools.nvim",
     ft = "rust",
@@ -22,6 +22,21 @@ local plugins = {
     init = function ()
       vim.g.rustfmt_autosave = 1
     end
+  },
+
+  -- https://github.com/ray-x/go.nvim
+  {
+    "ray-x/go.nvim",
+    dependencies = {  -- optional packages
+      "neovim/nvim-lspconfig",
+      "nvim-treesitter/nvim-treesitter",
+    },
+    config = function()
+      require("go").setup()
+    end,
+    event = {"CmdlineEnter"},
+    ft = {"go", 'gomod'},
+    build = ':lua require("go.install").update_all_sync()' -- if you need to install/update all binaries
   },
 
   -- https://github.com/Saecki/crates.nvim
